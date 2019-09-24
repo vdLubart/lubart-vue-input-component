@@ -1,0 +1,23 @@
+{
+  "name": "lubart-vue-input-component",
+  "version": "1.0.0",
+  "description": "Contain different type of inputs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "input",
+    "checkbox",
+    "button",
+    "radio"
+  ],
+  "author": "Viacheslav Dymarchuk",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "vue2-datepicker": "^2.12",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0"
+  }
+}
