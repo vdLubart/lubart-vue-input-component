@@ -18,6 +18,12 @@ export default {
         }
     },
 
+    watch: {
+        value(val){
+            this.content = val;
+        }
+    },
+
     methods: {
         handleInput (e) {
             this.content = e.target.value;

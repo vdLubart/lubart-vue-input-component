@@ -7,6 +7,7 @@ import InputCheckbox from './components/InputCheckbox';
 import CheckboxGroup from './components/CheckboxGroup';
 import RadioGroup from './components/RadioGroup';
 import InputButton from './components/InputButton';
+import SubmitButton from './components/SubmitButton';
 
 export default {
 
@@ -20,8 +21,9 @@ export default {
         Vue.component('input-checkbox', InputCheckbox);
         Vue.component('input-email', InputEmail);
         Vue.component('input-button', InputButton);
+        Vue.component('submit-button', SubmitButton);
     }
 
 };
 
-export { InputText, InputArea, InputDate, CheckboxGroup, RadioGroup, InputNumber, InputCheckbox, InputEmail, InputButton };
+export { InputText, InputArea, InputDate, CheckboxGroup, RadioGroup, InputNumber, InputCheckbox, InputEmail, InputButton, SubmitButton };
