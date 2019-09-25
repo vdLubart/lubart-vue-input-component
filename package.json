@@ -1,6 +1,6 @@
 {
   "name": "lubart-vue-input-component",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Contain different type of inputs",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,9 @@
     "input",
     "checkbox",
     "button",
-    "radio"
+    "radio",
+    "submit",
+    "textarea"
   ],
   "author": "Viacheslav Dymarchuk",
   "license": "UNLICENSED",

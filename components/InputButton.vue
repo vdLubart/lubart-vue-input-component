@@ -1,18 +1,26 @@
 <template>
 
-    <block :no-wrap="!wrap" :id="name" :required="required" :withoutLabel="true">
+    <block :no-wrap="!wrap" :id="name" :withoutLabel="true">
 
-        <input v-if="submit" type="submit" :name="name" :id="name" class="input-component__button" v-model="content" />
+        <span>
 
-        <button v-if="!submit" type="button" :name="name" :id="name" class="input-component__button" v-on:click="$emit('click', true)">{{ content }}</button>
+            <input v-if="submit" type="submit" :name="name" :id="name" class="input-component__button" :value="content" />
+
+            <button v-if="!submit" type="button" :name="name" :id="name" class="input-component__button" v-on:click="$emit('click', true)">{{ content }}</button>
+
+        </span>
 
     </block>
 
 </template>
 
 <script>
+    import Block from './Block';
+
     export default {
         name: "InputButton",
+
+        components: { Block },
 
         props: {
             name: {type: String},

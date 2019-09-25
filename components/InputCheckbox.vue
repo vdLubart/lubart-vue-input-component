@@ -2,7 +2,7 @@
 
     <block :no-wrap="noWrap" :id="name" :required="required" :label="label" :withoutLabel="withoutLabel">
         <label class="checkbox-group__normalFont">
-            <input type="checkbox" :name="name" :value="ticValue" v-model="content" @input="handleInput"> {{ ticLabel }}
+            <input type="checkbox" :name="name" :value="ticValue" @input="handleInput"> {{ ticLabel }}
         </label>
     </block>
 
