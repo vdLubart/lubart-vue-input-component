@@ -13,5 +13,11 @@ export default {
         return {
             content: this.label
         }
+    },
+
+    watch: {
+        label(val){
+            this.content = val;
+        }
     }
 }
