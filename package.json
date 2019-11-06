@@ -1,6 +1,6 @@
 {
   "name": "lubart-vue-input-component",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Contain different type of inputs",
   "main": "index.js",
   "scripts": {

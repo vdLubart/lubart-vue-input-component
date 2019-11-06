@@ -23,7 +23,7 @@
 
         methods: {
             handleInput (e) {
-                this.content = parseInt(this.content);
+                this.content = parseInt(e.target.value);
                 if(this.min != undefined && this.content < this.min){
                     this.content = this.min;
                 }
