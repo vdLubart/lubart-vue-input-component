@@ -8,10 +8,14 @@ import CheckboxGroup from './components/CheckboxGroup';
 import RadioGroup from './components/RadioGroup';
 import InputButton from './components/InputButton';
 import SubmitButton from './components/SubmitButton';
+import InputSelect from './components/InputSelect';
 
 export default {
 
     register(Vue) {
+        window.$ = window.jQuery = require('jquery');
+        require('chosen-js');
+
         Vue.component('input-text', InputText);
         Vue.component('input-area', InputArea);
         Vue.component('input-date', InputDate);
@@ -22,8 +26,9 @@ export default {
         Vue.component('input-email', InputEmail);
         Vue.component('input-button', InputButton);
         Vue.component('submit-button', SubmitButton);
+        Vue.component('input-select', InputSelect);
     }
 
 };
 
-export { InputText, InputArea, InputDate, CheckboxGroup, RadioGroup, InputNumber, InputCheckbox, InputEmail, InputButton, SubmitButton };
+export { InputText, InputArea, InputDate, CheckboxGroup, RadioGroup, InputNumber, InputCheckbox, InputEmail, InputButton, SubmitButton, InputSelect };
