@@ -39,6 +39,11 @@
     }
 </script>
 
-<style scoped>
+<style>
+
+    .mx-datepicker{
+        width: 100%;
+        max-width: 500px;
+    }
 
 </style>
