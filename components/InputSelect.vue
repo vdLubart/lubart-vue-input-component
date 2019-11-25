@@ -1,7 +1,7 @@
 <template>
 
     <block :no-wrap="noWrap" :id="name" :required="required" :label="label" :withoutLabel="withoutLabel">
-        <select :multiple="isMultiple">
+        <select :multiple="isMultiple" :data-placeholder="placeholder">
             <option v-for="(label, value) in selectOptions" :value="value">{{ label }}</option>
         </select>
     </block>
@@ -17,6 +17,7 @@
         extends: InputBase,
 
         props: {
+            placeholder: {type: String, default: ""},
             options: {type: Object},
             multiple: {type: Boolean, default: false},
             chosen: {type: Boolean, default: true}
@@ -68,10 +69,20 @@
 
     /* Chosen override */
 
+    .chosen-container{
+        font-size: 14px !important;
+    }
+
     .chosen-container-single .chosen-single{
-        border-radius: initial;
+        border-radius: 4px;
+        border-color: #BFCED1;
         height: 29px;
         background: #fff;
+        line-height: 30px;
+    }
+
+    .chosen-container-single .chosen-single span{
+        color: #ccd3dd;
     }
 
     .chosen-container .chosen-results li.highlighted {
