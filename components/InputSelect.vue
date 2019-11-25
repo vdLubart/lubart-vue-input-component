@@ -81,7 +81,7 @@
         line-height: 30px;
     }
 
-    .chosen-container-single .chosen-single span{
+    .chosen-container-single .chosen-default span{
         color: #ccd3dd;
     }
 
