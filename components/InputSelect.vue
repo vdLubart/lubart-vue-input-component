@@ -1,7 +1,7 @@
 <template>
 
     <block :no-wrap="noWrap" :id="name" :required="required" :label="label" :withoutLabel="withoutLabel">
-        <select :multiple="isMultiple" :data-placeholder="placeholder">
+        <select :multiple="isMultiple" :data-placeholder="placeholder" :name="name">
             <option v-for="(label, value) in selectOptions" :value="value">{{ label }}</option>
         </select>
     </block>
