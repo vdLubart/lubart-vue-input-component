@@ -1,104 +1,81 @@
 <template>
 
     <block :no-wrap="noWrap" :id="name" :required="required" :label="label" :withoutLabel="withoutLabel">
-        <select :multiple="isMultiple" :data-placeholder="placeholder" :name="name">
-            <option v-for="(label, value) in selectOptions" :value="value">{{ label }}</option>
-        </select>
+        <v-select :value="selectedValue" :options="labeledOptions" :multiple="multiple" :placeholder="placeholder" @input="handleInput"></v-select>
     </block>
 
 </template>
 
 <script>
     import InputBase from './InputBase';
+    import vSelect from 'vue-select';
 
     export default {
         name: "InputSelect",
 
         extends: InputBase,
 
+        components: { vSelect },
+
         props: {
-            placeholder: {type: String, default: ""},
+            placeholder: {type: String, default: "Choose an option"},
             options: {type: Object},
-            multiple: {type: Boolean, default: false},
-            chosen: {type: Boolean, default: true}
+            multiple: {type: Boolean, default: false}
         },
 
         data(){
             return {
-                selectOptions: this.options,
-                isMultiple: this.multiple,
-                isChosen: this.isChosen,
-                selectTag: null
+                content: this.value,
+                labeledOptions: [],
+                selectedValue: null
             }
         },
 
         methods:{
-            applyChosen(){
-                this.selectTag = $(this.$el.lastChild);
+            handleInput (e) {
+                this.content = (e === null ? null : e.value);
 
-                $(this.selectTag)
-                    .val(this.value)
-                    .chosen({})
-                    .on("change", e => this.$emit('input', this.content = $(this.selectTag).val()) );
+                this.$emit('input', this.content);
             }
         },
 
-        mounted(){
-            if(this.chosen){
-                this.applyChosen();
+        watch:{
+            options() {
+                if(_.isObject(this.options)) {
+                    Object.keys(this.options).forEach(key => {
+                        this.labeledOptions.push({'label': this.options[key], 'value': key});
+                    });
+
+                    if(!_.isEmpty(this.content)) {
+                        this.selectedValue = {'label': this.labeledOptions[this.content], 'value': this.content}
+                    }
+                }
             }
-        },
-
-        watch: {
-            options(val){
-                this.selectOptions = val;
-            },
-
-            multiple(val){
-                this.isMultiple = val;
-            }
-        },
-
-        destroyed() {
-            $(this.selectTag).chosen('destroy');
         }
     }
 </script>
 
 <style>
 
-    /* Chosen override */
-
-    .chosen-container{
-        font-size: 14px !important;
-    }
-
-    .chosen-container-single .chosen-single{
+    .vs__dropdown-toggle{
         border-radius: 4px;
-        border-color: #BFCED1;
         height: 29px;
         background: #fff;
-        line-height: 30px;
+        border-color: #dbdbdb;
     }
 
-    .chosen-container-single .chosen-default span{
-        color: #ccd3dd;
+    .vs--open .vs__dropdown-toggle,
+    .vs__dropdown-menu{
+        border: 1px solid #77bac0;
     }
 
-    .chosen-container .chosen-results li.highlighted {
-        background-color: #77bac0;
-        background-image: none;
+    .vs__dropdown-option--highlight {
+        background: #77bac0 !important;
         color: #fff;
     }
 
-    .chosen-container-active .chosen-single {
-        border: 1px solid #77bac0;
+    .vs__selected-options input::placeholder, textarea::placeholder {
+        color: #a0aec0;
     }
-
-    .chosen-container-active .chosen-choices{
-        border: 1px solid #77bac0;
-    }
-
-    /* END Chosen override */
 
 </style>
