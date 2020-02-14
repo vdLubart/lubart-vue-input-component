@@ -20,36 +20,77 @@
         props: {
             placeholder: {type: String, default: "Choose an option"},
             options: {type: Object},
-            multiple: {type: Boolean, default: false}
+            multiple: {type: Boolean, default: false},
+            value: {type: String|Array, default: ""},
         },
 
         data(){
             return {
                 content: this.value,
                 labeledOptions: [],
-                selectedValue: null
+                selectedValue: this.multiple ? [] : null
             }
         },
 
         methods:{
             handleInput (e) {
-                this.content = (e === null ? null : e.value);
+                if(this.multiple){
+                    let content = [];
+                    let selected = [];
+                    e.forEach((item) => {
+                        content.push(item.value);
+                        selected.push({
+                            label: item.label,
+                            value: item.value
+                        })
+                    })
+                    this.content = (_.isEmpty(e) ? [] : content);
+                    this.selectedValue = selected;
+                }
+                else {
+                    this.content = (e === null ? null : e.value);
+
+                    if (!_.isEmpty(this.content)) {
+                        this.selectedValue = {'label': e.label, 'value': this.content}
+                    }
+                    else{
+
+                    }
+                }
 
                 this.$emit('input', this.content);
-            }
-        },
+            },
 
-        watch:{
-            options() {
+            setOptions(){
                 if(_.isObject(this.options)) {
+                    this.labeledOptions = [];
                     Object.keys(this.options).forEach(key => {
                         this.labeledOptions.push({'label': this.options[key], 'value': key});
                     });
 
-                    if(!_.isEmpty(this.content)) {
-                        this.selectedValue = {'label': this.labeledOptions[this.content], 'value': this.content}
+                    this.setValue();
+                }
+            },
+
+            setValue(){
+                if(_.isObject(this.options)) {
+                    if(this.multiple ? !_.isEmpty(this.content) : this.content!="") {
+                        this.selectedValue = {'label': this.options[this.content], 'value': this.content}
+                    }
+                    else{
+                        this.selectedValue = this.multiple ? [] : null;
                     }
                 }
+            }
+        },
+
+        mounted(){
+            this.setOptions();
+        },
+
+        watch:{
+            options() {
+                this.setOptions();
             }
         }
     }
