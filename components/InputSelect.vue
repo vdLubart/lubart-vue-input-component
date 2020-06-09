@@ -9,6 +9,7 @@
 <script>
     import InputBase from './InputBase';
     import vSelect from 'vue-select';
+    import 'vue-select/dist/vue-select.css';
 
     export default {
         name: "InputSelect",
@@ -54,7 +55,7 @@
                         this.selectedValue = {'label': e.label, 'value': this.content}
                     }
                     else{
-
+                        this.selectedValue = null;
                     }
                 }
 

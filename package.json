@@ -1,6 +1,6 @@
 {
   "name": "lubart-vue-input-component",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Contain different type of inputs",
   "main": "index.js",
   "scripts": {
@@ -18,10 +18,11 @@
   "author": "Viacheslav Dymarchuk",
   "license": "UNLICENSED",
   "dependencies": {
-    "vue-select": "^3.4.0",
+    "jquery": "^3.5.1",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
-    "vue2-datepicker": "^2.13.3",
-    "jquery": "^3.4.1"
+    "moment": "^2.26.0",
+    "vue": "^2.6.11",
+    "vue-select": "^3.10.3",
+    "vue2-datepicker": "^3.5.0"
   }
 }

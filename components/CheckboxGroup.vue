@@ -2,7 +2,7 @@
 
     <block :no-wrap="noWrap" :id="name" :required="required" :label="label" :withoutLabel="withoutLabel">
         <div v-for="(ticLabel, ticValue) in checkboxes">
-            <label class="checkbox-group__normalFont">
+            <label class="normalFont">
                 <input type="checkbox" :name="name" :value="ticValue" :checked="content[ticValue]" @input="handleInput"> {{ ticLabel }}
             </label>
         </div>
@@ -63,7 +63,7 @@
 
 <style scoped>
 
-    .checkbox-group__normalFont{
+    .normalFont{
         font-weight: normal;
     }
 
