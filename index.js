@@ -9,6 +9,8 @@ import RadioGroup from './components/RadioGroup';
 import InputButton from './components/InputButton';
 import SubmitButton from './components/SubmitButton';
 import InputSelect from './components/InputSelect';
+import InputPassword from './components/InputPassword';
+import InputHidden from './components/InputHidden';
 
 export default {
 
@@ -26,8 +28,10 @@ export default {
         Vue.component('input-button', InputButton);
         Vue.component('submit-button', SubmitButton);
         Vue.component('input-select', InputSelect);
+        Vue.component('input-password', InputPassword);
+        Vue.component('input-hidden', InputHidden);
     }
 
 };
 
-export { InputText, InputArea, InputDate, CheckboxGroup, RadioGroup, InputNumber, InputCheckbox, InputEmail, InputButton, SubmitButton, InputSelect };
+export { InputText, InputArea, InputDate, CheckboxGroup, RadioGroup, InputNumber, InputCheckbox, InputEmail, InputButton, SubmitButton, InputSelect, InputPassword, InputHidden };
